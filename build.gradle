@@ -83,6 +83,7 @@ checkstyle {
 scmVersion {
     tag {
 	prefix = 'campaigns'
+	initialVersion = {config, position -> "1.0.0"}
     }
     nextVersion {
 	suffix = 'SNAPSHOT'
