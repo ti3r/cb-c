@@ -14,7 +14,7 @@ buildscript {
 }
 
 plugins {
-    id 'pl.allegro.tech.build.axion-release' version '1.3.4'
+    id 'net.researchgate.release' version '2.3.4'
 }
 
 apply plugin: 'groovy'
@@ -23,11 +23,11 @@ apply plugin: 'idea'
 apply plugin: 'spring-boot'
 apply plugin: 'checkstyle'
 apply plugin: 'mongo'
-apply plugin: 'pl.allegro.tech.build.axion-release'
+apply plugin: 'net.researchgate.release'
 
 jar {
 	baseName = 'cb-campaigns'
-	version = '10'
+	version = "${version}"
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -79,22 +79,24 @@ checkstyle {
     ignoreFailures = true
 }
 
+
+
 //Release settings
-scmVersion {
-    tag {
-	prefix = 'campaigns'
-	initialVersion = {config, position -> "1.0.0"}
-    }
-    nextVersion {
-	suffix = 'SNAPSHOT'
-	separator = '-'
-	hooks {
-	    post 'fileUpdate', [file: 'gradle.properties', pattern: {v,p -> /.*version=.*/}, replacement: {v,p ->"version=$v"}]
-	}
-    }
-    hooks {
-	pre 'fileUpdate', [file: 'gradle.properties', pattern: {v,p -> /.*version=.*/}, replacement: {v,p ->"version=$v"}]
-	pre 'fileUpdate', [file: 'build.gradle', pattern: {v,p -> /^([\s\t]*)version =(.*)$/}, replacement: {v,p ->"\$1version = '$v'"}]
-	pre 'commit'
-    }
-}
+//scmVersion {
+//    tag {
+//	prefix = 'campaigns'
+//	initialVersion = {config, position -> "1.0.0"}
+//    }
+//    nextVersion {
+//	suffix = 'SNAPSHOT'
+//	separator = '-'
+//	hooks {
+//	    post 'fileUpdate', [file: 'gradle.properties', pattern: {v,p -> /.*version=.*/}, replacement: {v,p ->"version=$v"}]
+//	}
+//    }
+//    hooks {
+//	pre 'fileUpdate', [file: 'gradle.properties', pattern: {v,p -> /.*version=.*/}, replacement: {v,p ->"version=$v"}]
+//	pre 'fileUpdate', [file: 'build.gradle', pattern: {v,p -> /^([\s\t]*)version =(.*)$/}, replacement: {v,p ->"\$1version = '$v'"}]
+//	pre 'commit'
+//    }
+//}
