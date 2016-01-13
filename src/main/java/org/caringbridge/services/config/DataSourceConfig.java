@@ -31,38 +31,43 @@ public class DataSourceConfig extends AbstractMongoConfiguration {
 
     /**
      * Returns the String database name for the application.
+     * 
      * @return String with the value
      */
     @Override
     protected String getDatabaseName() {
-	return "microservices";
+        return "microservices";
     }
-    
+
     /**
      * Returns the Mongo object to be configured in the app.
+     * 
      * @return Mongo with the value
-     * @throws Exception in case something bad happens
+     * @throws Exception
+     *             in case something bad happens
      */
     @Override
     public Mongo mongo() throws Exception {
-	return null; //Not needed since we will override MongoDbFactory
+        // Not needed since we will override MongoDbFactory
+        return null;
     }
-    
+
     /**
-     * Returns the MongoDbFactory object that will be in charge of driving the 
+     * Returns the MongoDbFactory object that will be in charge of driving the
      * connection objects for the MongoDb database in the app.
+     * 
      * @return MongoDbFactory with the value
-     * @throws Exception in case something bad happens
+     * @throws Exception
+     *             in case something bad happens
      */
     @Override
     public MongoDbFactory mongoDbFactory() throws Exception {
-	MongoCredential credential = MongoCredential.createCredential("admin", "test", "admin".toCharArray());
-	int port = MONGO_DB_PORT;
-	ServerAddress seeds = new ServerAddress("server", port);
-	MongoClient client = new MongoClient(seeds, Arrays.asList(credential));
+        MongoCredential credential = MongoCredential.createCredential("admin", "test", "admin".toCharArray());
+        int port = MONGO_DB_PORT;
+        ServerAddress seeds = new ServerAddress("server", port);
+        MongoClient client = new MongoClient(seeds, Arrays.asList(credential));
 
-	SimpleMongoDbFactory factory = new SimpleMongoDbFactory(client, getDatabaseName());
-	return factory;
+        return new SimpleMongoDbFactory(client, getDatabaseName());
     }
 
 }

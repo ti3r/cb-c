@@ -34,8 +34,8 @@ public class PingController extends CbBaseController {
     @ApiResponse(code = 200, message = "Ping message in the response body as plain text")
     @RequestMapping(method = RequestMethod.GET)
     public final ResponseEntity<String> ping() {
-	getLog().info("Ping request");
-	return ResponseEntity.ok("Ping");
+        getLog().info("Ping request");
+        return ResponseEntity.ok("Ping");
     }
 
     /**
@@ -46,11 +46,11 @@ public class PingController extends CbBaseController {
      *             always as test
      */
     @ApiOperation(value = "ex", httpMethod = "GET", consumes = "*/*", produces = "application/json", notes = "Produces a simple error in the system to check the health of the serialization"
-	    + "mechanism of exceptions to json representations")
+            + "mechanism of exceptions to json representations")
     @RequestMapping(path = "/ex", method = RequestMethod.GET)
     public final ResponseEntity<String> exception() throws CbServiceException {
-	getLog().info("throwing exception");
-	throw new CbServiceException();
+        getLog().info("throwing exception");
+        throw new CbServiceException();
     }
 
     /**
@@ -60,11 +60,11 @@ public class PingController extends CbBaseController {
      *             always as test
      */
     @ApiOperation(value = "goalNotFound", httpMethod = "GET", consumes = "*/*", produces = "application/json", notes = "Produces a GoalNotFound error in the system to check the health of the serialization"
-	    + "mechanism of exceptions to json representations")
+            + "mechanism of exceptions to json representations")
     @RequestMapping(path = "/goal", method = RequestMethod.GET)
     public final ResponseEntity<String> goalNotFoundException() throws CbGoalNotFoundException {
-	getLog().info("throwing GoalNotFoundException");
-	throw new CbGoalNotFoundException();
+        getLog().info("throwing GoalNotFoundException");
+        throw new CbGoalNotFoundException();
     }
 
     /**
@@ -74,10 +74,10 @@ public class PingController extends CbBaseController {
      *             always as test
      */
     @ApiOperation(value = "personNotFound", httpMethod = "GET", consumes = "*/*", produces = "application/json", notes = "Produces a PersonNotFound error in the system to check the health of the serialization"
-	    + "mechanism of exceptions to json representations")
+            + "mechanism of exceptions to json representations")
     @RequestMapping(path = "/person", method = RequestMethod.GET)
     public final ResponseEntity<String> personNotFoundException() throws CbPersonNotFoundException {
-	getLog().info("throwing PersonNotFoundException");
-	throw new CbPersonNotFoundException();
+        getLog().info("throwing PersonNotFoundException");
+        throw new CbPersonNotFoundException();
     }
 }

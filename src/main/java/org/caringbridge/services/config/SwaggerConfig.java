@@ -63,13 +63,6 @@ public class SwaggerConfig {
     private String swaggerApiLicenseUrl;
 
     /**
-     * The configurable property that will contain the license version Of The
-     * Api.
-     */
-    @Value(value = "${org.caringbridge.services.version}")
-    private String apiVersion;
-
-    /**
      * Creates the Spring Bean that will configure the Swagger top level
      * documentation.
      *
@@ -80,8 +73,8 @@ public class SwaggerConfig {
      */
     @Bean
     public SwaggerSpringMvcPlugin createTopLevelSwaggerDocumentation(final SpringSwaggerConfig springSwaggerConfig) {
-	return new SwaggerSpringMvcPlugin(springSwaggerConfig).apiInfo(apiInfo()).includePatterns("/.*")
-		.apiVersion("2.0");
+        return new SwaggerSpringMvcPlugin(springSwaggerConfig).apiInfo(apiInfo()).includePatterns("/.*")
+                .apiVersion("2.0");
 
     }
 
@@ -91,9 +84,8 @@ public class SwaggerConfig {
      * @return ApiInfo object with the details.
      */
     public ApiInfo apiInfo() {
-	ApiInfo api = new ApiInfo(swaggerApiTitle, swaggerApiDescription, swaggerApiTermsLocation, swaggerApiContact,
-		swaggerApiLicenseName, swaggerApiLicenseUrl);
-	return api;
+        return new ApiInfo(swaggerApiTitle, swaggerApiDescription, swaggerApiTermsLocation, swaggerApiContact,
+                swaggerApiLicenseName, swaggerApiLicenseUrl);
     }
 
     /**
@@ -103,10 +95,10 @@ public class SwaggerConfig {
      */
     @Bean
     public ResourceBundleMessageSource messageSource() {
-	ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-	messageSource.setBasename("i18n/messages");
-	messageSource.setDefaultEncoding("UTF-8");
-	return messageSource;
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasename("i18n/messages");
+        messageSource.setDefaultEncoding("UTF-8");
+        return messageSource;
     }
 
 }

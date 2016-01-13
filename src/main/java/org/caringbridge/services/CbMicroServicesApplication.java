@@ -11,12 +11,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class CbMicroServicesApplication {
+
     /**
      * Main entry class for the micro-services application.
      * 
-     * @param args The command line arguments for the app
+     * @param args
+     *            The command line arguments for the app
      */
     public static void main(final String[] args) {
-	SpringApplication.run(CbMicroServicesApplication.class, args);
+        SpringApplication.run(CbMicroServicesApplication.class, args);
     }
 }
